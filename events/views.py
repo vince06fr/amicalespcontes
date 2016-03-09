@@ -8,7 +8,7 @@ from pinax.calendars.mixins import DailyMixin, MonthlyMixin
 
 from .models import Event
 
-from .forms import ContactForm
+from .forms import ReservationForm
 from django.views.generic.edit import FormView
 
 
@@ -70,15 +70,15 @@ class EventDeleteView(LoginRequiredMixin, OwnerMixin, GoHomeMixin, DeleteView):
     model = Event
 
 
-class ContactView(FormView, GoHomeMixin):
-    template_name = 'contact.html'
-    form_class = ContactForm
+class ReservationView(FormView):
+    template_name = 'reservation.html'
+    form_class = ReservationForm
     success_url = '/thanks/'
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
         form.send_email()
-        return super(ContactView, self).form_valid(form)
+        return super(ReservationView, self).form_valid(form)
 
 
 class ThankView(TemplateView):

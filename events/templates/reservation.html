@@ -1,7 +1,8 @@
 {% extends "site_base.html" %}
 {% load bootstrap %}
 {% block body %}
-<h1>Contact</h1>
+<h1>Demande de réservation de l'appartement de St Valliers</h1>
+<p1>Veuillez envoyer votre demande en precisant la periode souhaitée</p1>
 <form role="form" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}

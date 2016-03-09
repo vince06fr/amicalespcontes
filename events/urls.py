@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from .views import EventCreateView, EventUpdateView, EventDeleteView, HomeView, DayView
-from .views import ContactView, ThankView
+from .views import ReservationView, ThankView
 
 urlpatterns = [
     url(r"^$", HomeView.as_view(), name="home"),
@@ -19,7 +19,7 @@ urlpatterns = [
     url(r"^events/$", EventCreateView.as_view(), name="event_create"),
     url(r"^events/(?P<pk>\d+)/edit/$", EventUpdateView.as_view(), name="event_update"),
     url(r"^events/(?P<pk>\d+)/delete/$", EventDeleteView.as_view(), name="event_delete"),
-    url(r"^contact/", ContactView.as_view(), name="contact"),
+    url(r"^reservation/", ReservationView.as_view(), name="contact"),
     url(r"^thanks/", ThankView.as_view(), name="thanks"),
 ]
 
