@@ -1,12 +1,13 @@
 from django import forms
 from django.core.mail import send_mail
+from datetime import date
 
 
 class ReservationForm(forms.Form):
     nom = forms.CharField()
     email = forms.EmailField()
-    arrivee = forms.DateField(input_formats=['%d/%m/%Y'])
-    depart = forms.DateField(input_formats=['%d/%m/%Y'])
+    arrivee = forms.DateField(input_formats=['%d/%m/%Y'], label="Arrivée", initial=date.today().strftime("%d-%m-%Y"))
+    depart = forms.DateField(input_formats=['%d/%m/%Y'], initial=date.today().strftime("%d-%m-%Y"))
     commentaires = forms.CharField(widget=forms.Textarea)
 
     def send_email(self):
