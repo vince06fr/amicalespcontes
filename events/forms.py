@@ -6,8 +6,8 @@ from datetime import date
 class ReservationForm(forms.Form):
     nom = forms.CharField()
     email = forms.EmailField()
-    arrivee = forms.DateField(input_formats=['%d/%m/%Y'], label="Arrivée", initial=date.today().strftime("%d-%m-%Y"))
-    depart = forms.DateField(input_formats=['%d/%m/%Y'], initial=date.today().strftime("%d-%m-%Y"))
+    arrivee = forms.DateField(input_formats=['%d-%m-%Y'], label="Arrivée", initial=date.today().strftime("%d-%m-%Y"))
+    depart = forms.DateField(input_formats=['%d-%m-%Y'], initial=date.today().strftime("%d-%m-%Y"))
     commentaires = forms.CharField(widget=forms.Textarea)
 
     def send_email(self):
@@ -19,5 +19,5 @@ class ReservationForm(forms.Form):
         {}\n
         ****************************""".format(self.cleaned_data['nom'], self.cleaned_data['email'], self.cleaned_data['arrivee'], self.cleaned_data['depart'], self.cleaned_data['commentaires'])
         sender = "amicalespcontes@gmail.com"
-        recipient = "vince06fr@mail.com"
-        send_mail(sujet, body, sender, [recipient], fail_silently=False)
+        recipient = ["vince06fr@gmail.com", "riva.georges@gmail.com"]
+        send_mail(sujet, body, sender, recipient, fail_silently=False)
