@@ -1,7 +1,7 @@
 Pinax Calendars Demo
 =====================
 
-[![Join us on Slack](http://slack.pinaxproject.com/badge.svg)](http://slack.pinaxproject.com/)
+[![Join us on Slack](badge.svg)](http://slack.pinaxproject.com/)
 
 Pinax
 ------
