@@ -21,7 +21,8 @@ class ReservationForm(forms.Form):
         {}\n
         ****************************""".format(
             self.cleaned_data['nom'], self.cleaned_data['email'],
-            self.cleaned_data['arrivee'], self.cleaned_data['depart'],
+            self.cleaned_data['arrivee'].strftime("%d-%m-%Y"),
+            self.cleaned_data['depart'].strftime("%d-%m-%Y"),
             self.cleaned_data['commentaires']
         )
         sender = "amicalespcontes@gmail.com"
