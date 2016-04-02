@@ -125,6 +125,9 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.staticfiles",
 
+    # Debug
+    'debug_toolbar',
+
     # theme
     "bootstrapform",
     "pinax_theme_bootstrap",

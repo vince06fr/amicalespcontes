@@ -14,3 +14,16 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+
+@python_2_unicode_compatible
+class Reservation(models.Model):
+
+    nom = models.CharField(max_length=100)
+    email = models.EmailField()
+    date_debut = models.DateField()
+    date_fin = models.DateField()
+    confirmed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.nom

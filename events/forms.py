@@ -1,6 +1,8 @@
 from django import forms
 from django.core.mail import send_mail
 from datetime import date
+from events.models import Event
+from datetime import datetime
 
 
 class ReservationForm(forms.Form):
@@ -17,7 +19,21 @@ class ReservationForm(forms.Form):
         \n
         ********commentaires********\n
         {}\n
-        ****************************""".format(self.cleaned_data['nom'], self.cleaned_data['email'], self.cleaned_data['arrivee'], self.cleaned_data['depart'], self.cleaned_data['commentaires'])
+        ****************************""".format(
+            self.cleaned_data['nom'], self.cleaned_data['email'],
+            self.cleaned_data['arrivee'], self.cleaned_data['depart'],
+            self.cleaned_data['commentaires']
+        )
         sender = "amicalespcontes@gmail.com"
         recipient = ["vince06fr@gmail.com", "riva.georges@gmail.com"]
         send_mail(sujet, body, sender, recipient, fail_silently=False)
+
+    def Reservation(self):
+        nom = self.cleaned_data['nom']
+        email = self.cleaned_data['email']
+        date_debut = self.cleaned_data['arrivee']
+        date_fin = self.cleaned_data['depart']
+
+        jour = date-debut
+        while jour < date_fin or jour == date:
+            Event()
