@@ -78,6 +78,7 @@ class ReservationView(FormView):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
         form.send_email()
+        form.reservation()
         return super(ReservationView, self).form_valid(form)
 
 
