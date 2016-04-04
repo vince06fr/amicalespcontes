@@ -11,7 +11,9 @@
     <h1 class="text-center">{% blocktrans %}Planning des reservations de l'appartement de St Etienne{% endblocktrans %}</h1>
     <p class="lead">
         {% blocktrans %}
-        <b>Ce planing</b> affiche les reservations validées par l'amicale. Vous pouvez faire une demande de reservation en vous rendant sur la <a href="/reservation">page du formulaire de reservation</a>
+        <b>Les demandes en attente de validation</b> par l'Amicale sont affichées entre les signes <code>??</code><br/>
+        <b>les demandes validées</b> par l'amicale sont affichée sans aucun signe.<br/>
+         Vous pouvez faire une demande de reservation en vous rendant sur la <a href="/reservation">page du formulaire de réservation</a>
         {% endblocktrans %}
     </p>
     {% calendar events the_date %}
