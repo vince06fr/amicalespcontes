@@ -65,10 +65,13 @@ def handle_user_signed_up(sender, **kwargs):
     )
 
 
-######################################################
 @receiver(pre_save, sender=Reservation)
 def reservation_pre_save(sender, **kwargs):
-    print('pre_save: {}'.format(kwargs['instance'].__dict__))
+    """clean Event before saving reservation."""
+    events = Event.objects.all()
+    for event in events:
+        if event.reservation == kwargs['instance']:
+            event.delete()
 
 
 @receiver(post_save, sender=Reservation)
@@ -79,7 +82,7 @@ def reservation_post_save(sender, **kwargs):
     # sinon si user est connecté
     # user = request.user
     if kwargs['instance'].confirmed is False:
-        nom = '?' + kwargs['instance'].nom + '?'
+        nom = '??' + kwargs['instance'].nom + '??'
     else:
         nom = kwargs['instance'].nom
 
@@ -88,26 +91,5 @@ def reservation_post_save(sender, **kwargs):
     jour = date_debut
 
     while jour < date_fin or jour == date_fin:
-        Event(title=nom, date=jour, created_by=user).save()
+        Event(title=nom, date=jour, created_by=user, reservation=kwargs['instance']).save()
         jour += timedelta(days=1)
-
-    print('Saved: {}'.format(kwargs['instance'].__dict__))
-
-
-@receiver(pre_delete, sender=Reservation)
-def model_pre_delete(sender, **kwargs):
-    print('pre_delete: {}'.format(kwargs['instance'].__dict__))
-
-
-@receiver(post_delete, sender=Reservation)
-def reservation_post_delete(sender, **kwargs):
-    nom = kwargs['instance'].nom
-    date_debut = kwargs['instance'].date_debut
-    date_fin = kwargs['instance'].date_fin
-    jour = date_debut
-
-    while jour < date_fin or jour == date_fin:
-        Event.objects.get(title=nom, date=jour).delete()
-        jour += timedelta(days=1)
-
-    print('Deleted: {}'.format(kwargs['instance'].__dict__))
