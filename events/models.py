@@ -22,7 +22,7 @@ class Event(models.Model):
 
     title = models.CharField(max_length=100)
     date = models.DateField()
-    created_by = models.ForeignKey(User)
+    created_by = models.ForeignKey(User, blank=True, null=True)
     confirmed = models.BooleanField(default=False)
     reservation = models.ForeignKey(Reservation, default=None)
 

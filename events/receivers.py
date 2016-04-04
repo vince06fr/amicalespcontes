@@ -7,10 +7,9 @@ from account.signals import user_login_attempt, user_logged_in
 from pinax.eventlog.models import log
 
 
-from django.db.models.signals import pre_save, pre_delete, post_save, post_delete
-from django.contrib.auth.models import User
+from django.db.models.signals import pre_save, post_save
 from events.models import Event, Reservation
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 
 @receiver(user_logged_in)
@@ -77,10 +76,7 @@ def reservation_pre_save(sender, **kwargs):
 @receiver(post_save, sender=Reservation)
 def reservation_post_save(sender, **kwargs):
     """bash add Event following Reservation period."""
-    # si user n'est pas connecté
-    user = User.objects.get(username='admin')
-    # sinon si user est connecté
-    # user = request.user
+
     if kwargs['instance'].confirmed is False:
         nom = '??' + kwargs['instance'].nom + '??'
     else:
@@ -91,5 +87,5 @@ def reservation_post_save(sender, **kwargs):
     jour = date_debut
 
     while jour < date_fin or jour == date_fin:
-        Event(title=nom, date=jour, created_by=user, reservation=kwargs['instance']).save()
+        Event(title=nom, date=jour, reservation=kwargs['instance']).save()
         jour += timedelta(days=1)
