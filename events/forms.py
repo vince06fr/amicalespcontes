@@ -1,9 +1,7 @@
 from django import forms
 from django.core.mail import send_mail
 from datetime import date
-from events.models import Event
-from datetime import datetime, timedelta
-from django.contrib.auth.models import AnonymousUser, User
+from events.models import Reservation
 
 
 class ReservationForm(forms.Form):
@@ -16,7 +14,9 @@ class ReservationForm(forms.Form):
     def send_email(self):
         sujet = "Reservation"
         body = """Bonjour,\n
-        Une demande de réservation de l'appartement de St Etiennes a été effectuée depuis le site de l'amicale par {} ({}) pour la période du {} au {}\n
+        Une demande de réservation de l'appartement de St Etiennes a été \
+        effectuée depuis le site de l'amicale par {} ({}) pour la période \
+        du {} au {}\n
         \n
         ********commentaires********\n
         {}\n
@@ -35,13 +35,7 @@ class ReservationForm(forms.Form):
         email = self.cleaned_data['email']
         date_debut = self.cleaned_data['arrivee']
         date_fin = self.cleaned_data['depart']
-
-        jour = date_debut
-        # anon = AnonymousUser()
-        # user = User(anon)
-        user = User.objects.get(username='admin')
-
-        while jour < date_fin or jour == date_fin:
-            Event(title='?'+nom+'?', date=jour, created_by=user).save()
-            jour += timedelta(days=1)
-
+        Reservation(
+            nom=nom, email=email, date_debut=date_debut, date_fin=date_fin,
+            confirmed=False
+        ).save()

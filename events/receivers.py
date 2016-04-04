@@ -64,37 +64,50 @@ def handle_user_signed_up(sender, **kwargs):
         extra={}
     )
 
+
 ######################################################
 @receiver(pre_save, sender=Reservation)
 def reservation_pre_save(sender, **kwargs):
     print('pre_save: {}'.format(kwargs['instance'].__dict__))
 
+
 @receiver(post_save, sender=Reservation)
 def reservation_post_save(sender, **kwargs):
+    """bash add Event following Reservation period."""
     # si user n'est pas connecté
     user = User.objects.get(username='admin')
     # sinon si user est connecté
     # user = request.user
-    if  kwargs['instance'].confirmed == False:
+    if kwargs['instance'].confirmed is False:
         nom = '?' + kwargs['instance'].nom + '?'
     else:
         nom = kwargs['instance'].nom
 
-    email = kwargs['instance'].email
     date_debut = kwargs['instance'].date_debut
     date_fin = kwargs['instance'].date_fin
-
-    jour = datetime.date(date_debut)
+    jour = date_debut
 
     while jour < date_fin or jour == date_fin:
         Event(title=nom, date=jour, created_by=user).save()
         jour += timedelta(days=1)
+
     print('Saved: {}'.format(kwargs['instance'].__dict__))
+
 
 @receiver(pre_delete, sender=Reservation)
 def model_pre_delete(sender, **kwargs):
     print('pre_delete: {}'.format(kwargs['instance'].__dict__))
 
+
 @receiver(post_delete, sender=Reservation)
-def model_post_delete(sender, **kwargs):
+def reservation_post_delete(sender, **kwargs):
+    nom = kwargs['instance'].nom
+    date_debut = kwargs['instance'].date_debut
+    date_fin = kwargs['instance'].date_fin
+    jour = date_debut
+
+    while jour < date_fin or jour == date_fin:
+        Event.objects.get(title=nom, date=jour).delete()
+        jour += timedelta(days=1)
+
     print('Deleted: {}'.format(kwargs['instance'].__dict__))
