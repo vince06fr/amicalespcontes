@@ -11,7 +11,11 @@
             <a href="{% url 'account_settings' %}"><i class="fa fa-cog"></i> {% trans "Settings" %}</a>
         </li>
         <li>
-            <a href="{% url 'event_create' %}"><i class="fa fa-calendar"></i> {% trans "Create Event" %}</a>
+            {% if user.is_staff %}
+              <a href="/admin/events/reservation/"><i class="fa fa-calendar"></i> {% trans "Créer reservation" %}</a>
+            {% else %}
+              <a href="{% url 'event_create' %}"><i class="fa fa-calendar"></i> {% trans "Create Event" %}</a>
+            {% endif %}
         </li>
         <li>
             <a id="account_logout" href="{% url 'account_logout' %}"><i class="fa fa-power-off"></i> {% trans "Log out" %}</a>
