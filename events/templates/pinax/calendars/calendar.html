@@ -35,9 +35,15 @@
               {% if day_events %}
                 <div class="day-event-list">
                   {% for event in day_events %}
-                    <div class="day-event">
-                      {{ event }}
-                    </div>
+                    {% if event.confirmed %}
+                        <div class="day-event">
+                            <span style="background-color: #60da11; color: #000000;">{{ event }}</span>
+                        </div>
+                    {% else %}
+                        <div class="day-event">
+                            <span style="background-color: #f7b12f; color: #000000;">{{ event }}</span>
+                        </div>
+                    {% endif %}
                   {% endfor %}
                 </div>
               {% endif %}
