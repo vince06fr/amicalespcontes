@@ -9,8 +9,7 @@ class ReservationForm(forms.Form):
     email = forms.EmailField()
     arrivee = forms.DateField(input_formats=['%d-%m-%Y'], label="Arrivée", initial=date.today().strftime("%d-%m-%Y"))
     depart = forms.DateField(input_formats=['%d-%m-%Y'], initial=date.today().strftime("%d-%m-%Y"))
-    commentaires = forms.CharField(widget=forms.Textarea)
-
+    commentaires = forms.CharField(widget=forms.Textarea, required=False)
     def send_email(self):
         sujet = "Reservation"
         body = """Bonjour,\n

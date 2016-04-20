@@ -87,5 +87,5 @@ def reservation_post_save(sender, **kwargs):
     jour = date_debut
 
     while jour < date_fin or jour == date_fin:
-        Event(title=nom, date=jour, reservation=kwargs['instance']).save()
+        Event(title=nom, date=jour, reservation=kwargs['instance'], confirmed = kwargs['instance'].confirmed).save()
         jour += timedelta(days=1)
