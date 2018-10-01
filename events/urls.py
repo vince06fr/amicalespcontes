@@ -13,7 +13,8 @@ urlpatterns = [
     url(r"^(?P<year>\d{4})/(?P<month>\d{1,2})/$", HomeView.as_view(), name="monthly"),
     url(r"^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$", DayView.as_view(), name="daily"),
 
-    url(r"^admin/", include(admin.site.urls)),
+    #url(r"^admin/", include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r"^account/", include("account.urls")),
 
     url(r"^events/$", EventCreateView.as_view(), name="event_create"),

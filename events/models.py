@@ -22,9 +22,9 @@ class Event(models.Model):
 
     title = models.CharField(max_length=100)
     date = models.DateField()
-    created_by = models.ForeignKey(User, blank=True, null=True)
+    created_by = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     confirmed = models.BooleanField(default=False)
-    reservation = models.ForeignKey(Reservation, default=None)
+    reservation = models.ForeignKey(Reservation, default=None, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
