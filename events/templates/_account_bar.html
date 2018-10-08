@@ -12,7 +12,7 @@
         </li>
         <li>
             {% if user.is_staff %}
-              <a href="/admin/events/reservation/"><i class="fa fa-calendar"></i> {% trans "Créer reservation" %}</a>
+              <a href="/admin/events/reservation/"><i class="fa fa-calendar"></i> {% trans "Gérer reservation" %}</a>
             {% else %}
               <a href="{% url 'event_create' %}"><i class="fa fa-calendar"></i> {% trans "Create Event" %}</a>
             {% endif %}
