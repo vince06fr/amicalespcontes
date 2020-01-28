@@ -96,6 +96,7 @@ coverage.xml
 # Django stuff:
 *.log
 migrations/
+*/migrations
 media/
 #settings.py
 
