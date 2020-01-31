@@ -26,7 +26,7 @@ class ReservationForm(forms.Form):
             self.cleaned_data['commentaires']
         )
         sender = "amicalespcontes@gmail.com"
-        recipient = ["vince06fr@gmail.com", "riva.georges@gmail.com", "cyrsp@hotmail.fr"]
+        recipient = ["vince06fr@gmail.com"]  #, "riva.georges@gmail.com", "cyrsp@hotmail.fr"]
         send_mail(sujet, body, sender, recipient, fail_silently=False)
 
     def reservation(self):
