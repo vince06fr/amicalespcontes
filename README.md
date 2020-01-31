@@ -1,7 +1,11 @@
-Pinax Calendars Demo
-=====================
+# Amicalespcontes
 
-[![Join us on Slack](badge.svg)](http://slack.pinaxproject.com/)
+Amicalespcontes is a fork of [pinax-calendars](https://github.com/pinax/pinax-calendars)  modified to serve as a reservation site for the association of Contes firefighters.  
+`pinax-calendars-demo` is a demo project to show how the [pinax-calendars](https://github.com/pinax/pinax-calendars) app works.
+
+
+
+[Join pinaxproject on Slack](http://slack.pinaxproject.com/)
 
 Pinax
 ------
@@ -12,27 +16,35 @@ This collection can be found at http://pinaxproject.com.
 This app was developed as part of the Pinax ecosystem but is just a Django app and can be used independently of other Pinax apps.
 
 
-pinax-calendars-demo
----------------------
-
-`pinax-calendars-demo` is a demo project to show how the [pinax-calendars](https://github.com/pinax/pinax-calendars) app works.
-
-
 Getting Started
 ---------------
 
-Make sure you are using a virtual environment of some sort (e.g. `virtualenv` or
-`pyenv`).
+```
+# first clone the project and cd into project directory
+# Then, create a virtual environment and activate it
+python3.7 -m venv
+source venv/bin/activate
+# update virtualenv
+pip install - U pip setuptools
+# optionally, you can install wheel(https://pythonwheels.com/) 
+pip install wheel
+# install the development requirments
+pip install - r requirements/development.txt
+# export the environment variables for testing
+unset DJANGO_SETTINGS_MODULE
+export DJANGO_SETTINGS_MODULE="events.settings.development"
+export SECRET_KEY="secret"
+# migrate & run
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
 
 ```
-pip install -r requirements.txt
-./manage.py migrate
-./manage.py loaddata sites
-./manage.py runserver
-```
+
+Deployment in production is out of scope, please refer to the [official django documentation](https://docs.djangoproject.com/en/dev/howto/deployment/)
 
 
-Documentation
+Pinax Documentation
 ----------------
 
 The Pinax documentation is available at http://pinaxproject.com/pinax/. The `pinax-calendars-demo` documentation is currently under construction. If you would like to help us improve our documentation or write more documentation, please join our Pinax Project Slack team and let us know!
