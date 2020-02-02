@@ -24,12 +24,6 @@ SECRET_KEY = get_env_variable('SECRET_KEY')
 # GMAIL_USER = get_env_variable('GMAIL_USER')
 # GMAIL_PASSWORD = get_env_variable('GMAIL_PASSWORD')
 
-'''
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
-PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
-BASE_DIR = PACKAGE_ROOT
-'''
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
