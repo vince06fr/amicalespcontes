@@ -21,9 +21,9 @@ MIDDLEWARE += [
 # Databases
 
 # Import DB name, user & password from env variables
-DB_NAME = get_env_variable('amicalespcontes')
-DB_USER = get_env_variable('amicalespcontes')
-DB_PASSWORD = get_env_variable('ju5ootheiRoopai')
+DB_NAME = get_env_variable('DB_NAME')
+DB_USER = get_env_variable('DB_USER')
+DB_PASSWORD = get_env_variable('DB_PASSWORD')
 
 DATABASES = {
     'default': {
