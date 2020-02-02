@@ -20,10 +20,6 @@ def get_env_variable(var_name):
 # import the secret key from env variable
 SECRET_KEY = get_env_variable('SECRET_KEY')
 
-# import GMAIL user & password from env variables
-# GMAIL_USER = get_env_variable('GMAIL_USER')
-# GMAIL_PASSWORD = get_env_variable('GMAIL_PASSWORD')
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, os.pardir))

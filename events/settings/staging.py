@@ -20,12 +20,17 @@ MIDDLEWARE += [
 
 # Databases
 
+# Import DB name, user & password from env variables
+DB_NAME = get_env_variable('amicalespcontes')
+DB_USER = get_env_variable('amicalespcontes')
+DB_PASSWORD = get_env_variable('ju5ootheiRoopai')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'amicalespcontes',
-        'USER': 'amicalespcontes',
-        'PASSWORD': 'password',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
         'HOST': 'localhost',
         'PORT': '',          # Set to empty string for default.
     }
