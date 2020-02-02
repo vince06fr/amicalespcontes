@@ -63,12 +63,16 @@ CACHES = {
     }
 }
 
+# Databases
 
-FIXTURE_DIRS = [
-    os.path.join(PROJECT_ROOT, "fixtures"),
-]
+DATABASES = {
+   "default": {
+       "ENGINE": "django.db.backends.sqlite3",
+       "NAME": os.path.join(PROJECT_ROOT, "../database/db.sqlite3"),
+   }
+}
 
-#EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ACCOUNT_OPEN_SIGNUP = True

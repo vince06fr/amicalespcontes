@@ -20,6 +20,10 @@ def get_env_variable(var_name):
 # import the secret key from env variable
 SECRET_KEY = get_env_variable('SECRET_KEY')
 
+# import GMAIL user & password from env variables
+# GMAIL_USER = get_env_variable('GMAIL_USER')
+# GMAIL_PASSWORD = get_env_variable('GMAIL_PASSWORD')
+
 '''
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -97,17 +101,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'events.wsgi.application'
 
 
-# Databases
+FIXTURE_DIRS = [
+    os.path.join(PROJECT_ROOT, "fixtures"),
+]
 
-DATABASES = {
-   "default": {
-       "ENGINE": "django.db.backends.sqlite3",
-       "NAME": os.path.join(PROJECT_ROOT, "../database/db.sqlite3"),
-   }
-}
 
 # Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -127,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 SITE_ID = int(os.environ.get("SITE_ID", 1))
 
 # Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
+# https://docs.djangoproject.com/en/dev/topics/i18n/
 
 LANGUAGE_CODE = 'fr-fr'
 
