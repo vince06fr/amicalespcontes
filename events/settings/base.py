@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
     # external
     "account",
-    "metron",
+    # "metron",
     "pinax.calendars",
     "pinax.eventlog",
 

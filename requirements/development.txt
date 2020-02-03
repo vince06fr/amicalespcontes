@@ -1,13 +1,2 @@
-Django==2.1.5
-django-appconf==1.0.3
-django-bootstrap-form==3.4
-django-user-accounts==2.1.0
-jsonfield==2.0.2
-metron==1.3.7
-pinax-calendars==2.0.4
-pinax-eventlog==2.0.3
-pinax-theme-bootstrap==8.0.1
-pkg-resources==0.0.0
-pytz==2019.3
-six==1.14.0
+-r base.txt # includes all dependencies in `base.txt`
 django-debug-toolbar==2.1
