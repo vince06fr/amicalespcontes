@@ -77,10 +77,11 @@ def reservation_pre_save(sender, **kwargs):
 def reservation_post_save(sender, **kwargs):
     """bash add Event following Reservation period."""
 
-    if kwargs['instance'].confirmed is False:
-        nom = '??' + kwargs['instance'].nom + '??'
-    else:
-        nom = kwargs['instance'].nom
+    # if kwargs['instance'].confirmed is False:
+    #     nom = '??' + kwargs['instance'].nom + '??'
+    # else:
+    #     nom = kwargs['instance'].nom
+    nom = kwargs['instance'].nom
 
     date_debut = kwargs['instance'].date_debut
     date_fin = kwargs['instance'].date_fin
