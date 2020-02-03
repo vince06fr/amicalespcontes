@@ -23,7 +23,10 @@
     {% else %}
         <li><a href="{% url 'account_login' %}">{% trans "Log in" %}</a></li>
         {% if ACCOUNT_OPEN_SIGNUP %}
+            {% comment %}
+            { # ACCOUNT_OPEN_SIGNUP=False don't work in production }
             <li><a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></li>
+            {% endcomment %}
         {% endif %}
     {% endif %}
 </ul>
