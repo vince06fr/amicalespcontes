@@ -163,3 +163,6 @@ STATICFILES_FINDERS = [
 AUTHENTICATION_BACKENDS = [
     "account.auth_backends.UsernameAuthenticationBackend",
 ]
+
+# Close the registration
+ACCOUNT_OPEN_SIGNUP = False
