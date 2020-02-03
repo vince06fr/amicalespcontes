@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # "metron",
     "pinax.calendars",
     "pinax.eventlog",
+    "bootstrap_datepicker_plus",
 
     # project
     "events",
