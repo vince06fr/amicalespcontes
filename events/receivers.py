@@ -1,4 +1,5 @@
 from django.dispatch import receiver
+from django.db.models.signals import pre_save, post_save
 
 from account.signals import password_changed
 from account.signals import user_sign_up_attempt, user_signed_up
@@ -6,8 +7,6 @@ from account.signals import user_login_attempt, user_logged_in
 
 from pinax.eventlog.models import log
 
-
-from django.db.models.signals import pre_save, post_save
 from events.models import Event, Reservation
 from datetime import timedelta
 

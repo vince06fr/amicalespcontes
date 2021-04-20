@@ -2,6 +2,10 @@ from django.contrib import admin
 from events.models import Event, Reservation
 
 
+admin.site.site_header = "Administration du site de l'Amicale des SP de Contes"
+admin.site.site_title = 'Amicale des SP de Contes'
+
+
 # Reservations
 def set_reservation_validate(modeladmin, request, queryset):
     queryset.update(confirmed=True)
@@ -39,3 +43,4 @@ class EventAdmin(admin.ModelAdmin):
 
 admin.site.register(Reservation, ReservationAdmin)
 admin.site.register(Event, EventAdmin)
+

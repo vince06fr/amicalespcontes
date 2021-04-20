@@ -1,4 +1,4 @@
-from datetime import date
+#from datetime import date
 from django import forms
 from django.core.mail import send_mail
 from bootstrap_datepicker_plus import DateTimePickerInput, DatePickerInput
