@@ -1,7 +1,7 @@
 #from datetime import date
 from django import forms
 from django.core.mail import send_mail
-from bootstrap_datepicker_plus import DateTimePickerInput, DatePickerInput
+from bootstrap_datepicker_plus.widgets import DateTimePickerInput, DatePickerInput
 from events.models import Reservation
 
 
