@@ -167,3 +167,7 @@ AUTHENTICATION_BACKENDS = [
 
 # Close the registration
 ACCOUNT_OPEN_SIGNUP = False
+
+# Configure DEFAULT_AUTO_FIELD
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
