@@ -32,6 +32,7 @@ pip install wheel
 pip install - r requirements/development.txt
 # export the environment variables for testing
 unset DJANGO_SETTINGS_MODULE
+unset SECRET_KEY
 export DJANGO_SETTINGS_MODULE="events.settings.development"
 export SECRET_KEY="secret"
 # migrate & run
