@@ -1,5 +1,5 @@
-Django==3.2.25
-django-bootstrap-datepicker==1.4.0
+Django==5.0.6
+django-bootstrap-datepicker==1.5.0
 django-bootstrap-datepicker-plus==5.0.5
 django-bootstrap-form==3.4
 django-user-accounts==3.3.2
