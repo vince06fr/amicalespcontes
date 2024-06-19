@@ -8,9 +8,15 @@ DEBUG = True
 ALLOWED_HOSTS = get_env_variable('ALLOWED_HOSTS').split(',' )
 INTERNAL_IPS = '127.0.0.1'
 
-CSRF_TRUSTED_ORIGINS = get_env_variable('CSRF_TRUSTED_ORIGINS').split(',' ) 
+#Configuration CSRF
+CSRF_TRUSTED_ORIGINS = get_env_variable('CSRF_TRUSTED_ORIGINS').split(',' )
+# Paramètres de sécurité pour http (non sécurisé)
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
+# Autres configurations de sécurité
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
 
 INSTALLED_APPS += [
     #Debug
