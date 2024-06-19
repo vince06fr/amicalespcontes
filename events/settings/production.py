@@ -8,6 +8,10 @@ DEBUG = False
 ALLOWED_HOSTS = get_env_variable('ALLOWED_HOSTS').split(',' )
 INTERNAL_IPS = '127.0.0.1'
 
+CSRF_TRUSTED_ORIGINS = get_env_variable('CSRF_TRUSTED_ORIGINS').split(',' ) 
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 # Databases
 
 # Import DB name, user & password from env variables
