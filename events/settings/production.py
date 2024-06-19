@@ -8,9 +8,18 @@ DEBUG = False
 ALLOWED_HOSTS = get_env_variable('ALLOWED_HOSTS').split(',' )
 INTERNAL_IPS = '127.0.0.1'
 
+#Configuration CSRF
 CSRF_TRUSTED_ORIGINS = get_env_variable('CSRF_TRUSTED_ORIGINS').split(',' ) 
+# Activer la sécurité des cookies pour HTTPS
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+# # Autres configurations de sécurité
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 
 # Databases
 

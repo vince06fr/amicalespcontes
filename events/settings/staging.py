@@ -10,7 +10,7 @@ INTERNAL_IPS = '127.0.0.1'
 
 #Configuration CSRF
 CSRF_TRUSTED_ORIGINS = get_env_variable('CSRF_TRUSTED_ORIGINS').split(',' )
-# Paramètres de sécurité pour http (non sécurisé)
+# Désactiver la sécurité des cookies pour HTTP
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 # Autres configurations de sécurité
