@@ -98,6 +98,9 @@ coverage.xml
 migrations/
 */migrations
 media/
+# Collected static and media
+site_media/
+events/site_media/
 #settings.py
 
 # Sphinx documentation
