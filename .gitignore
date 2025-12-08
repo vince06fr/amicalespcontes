@@ -117,4 +117,13 @@ env
 env3
 pypioffline/
 *.swp
+.vscode/
+.vs/
+.vim/
+.vimrc
+.nvimlog
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 .idea/
