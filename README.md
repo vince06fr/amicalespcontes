@@ -3,6 +3,8 @@
 Amicalespcontes is a fork of [pinax-calendars](https://github.com/pinax/pinax-calendars)  modified to serve as a reservation site for the association of Contes firefighters.  
 `pinax-calendars-demo` is a demo project to show how the [pinax-calendars](https://github.com/pinax/pinax-calendars) app works.
 
+Current stack: Django 5.2.9.
+
 
 
 [Join pinaxproject on Slack](http://slack.pinaxproject.com/)
@@ -19,17 +21,22 @@ This app was developed as part of the Pinax ecosystem but is just a Django app a
 Getting Started
 ---------------
 
+System dependencies (for memcached cache backend via pylibmc):
+```
+sudo apt install -y build-essential libmemcached-dev zlib1g-dev python3-dev
+```
+
 ```
 # first clone the project and cd into project directory
 # Then, create a virtual environment and activate it
-python3.7 -m venv
+python3 -m venv venv
 source venv/bin/activate
 # update virtualenv
-pip install - U pip setuptools
-# optionally, you can install wheel(https://pythonwheels.com/) 
+pip install -U pip setuptools
+# optionally, you can install wheel(https://pythonwheels.com/)
 pip install wheel
 # install the development requirments
-pip install - r requirements/development.txt
+pip install -r requirements/development.txt
 # export the environment variables for testing
 unset DJANGO_SETTINGS_MODULE
 unset SECRET_KEY
@@ -73,5 +80,4 @@ Pinax Project Blog and Twitter
 -------------------------------
 
 For updates and news regarding the Pinax Project, please follow us on Twitter at @pinaxproject and check out our blog http://blog.pinaxproject.com.
-
 
