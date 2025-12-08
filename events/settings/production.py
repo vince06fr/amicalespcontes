@@ -42,9 +42,8 @@ DATABASES = {
 
 CACHES = {
     'default': {
-         'BACKEND':
-'django.core.cache.backends.memcached.PyLibMCCache',
-         'LOCATION': '/tmp/memcached.sock',
+         'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+         'LOCATION': '127.0.0.1:11211',
     }
 }
 
@@ -125,4 +124,3 @@ EMAIL_HOST_USER = GMAIL_USER
 EMAIL_HOST_PASSWORD = GMAIL_PASSWORD
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-

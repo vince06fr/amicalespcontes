@@ -1,2 +1,3 @@
 -r base.txt # includes all dependencies in `base.txt`
 psycopg2-binary==2.9.11
+pylibmc==1.6.3
