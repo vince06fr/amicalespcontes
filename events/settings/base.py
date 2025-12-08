@@ -88,7 +88,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.messages.context_processors.messages",
                 "account.context_processors.account",
-                "pinax_theme_bootstrap.context_processors.theme",
+                "events.context_processors.theme",
             ],
         },
     },
@@ -175,4 +175,3 @@ ACCOUNT_OPEN_SIGNUP = False
 
 # Configure DEFAULT_AUTO_FIELD
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-
