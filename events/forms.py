@@ -1,5 +1,6 @@
 #from datetime import date
 from django import forms
+from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from bootstrap_datepicker_plus.widgets import DatePickerInput
 from events.models import Reservation
@@ -60,3 +61,11 @@ class ReservationForm(forms.Form):
             heure_arrivee=heure_arrivee, heure_depart=heure_depart,
             confirmed=False
         ).save()
+
+    def clean(self):
+        cleaned = super().clean()
+        arrivee = cleaned.get("arrivee")
+        depart = cleaned.get("depart")
+        if arrivee and depart and depart <= arrivee:
+            raise ValidationError("La date de départ doit être au moins le lendemain de la date d'arrivée.")
+        return cleaned
