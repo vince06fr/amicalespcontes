@@ -35,13 +35,51 @@
               {% if day_events %}
                 <div class="day-event-list">
                   {% for event in day_events %}
+                    {% with res=event.reservation %}
+                    {% with arrival_time=res.heure_arrivee|time:"H:i" departure_time=res.heure_depart|time:"H:i" %}
                     <div class="day-event">
-                    {% if event.confirmed %}
-                      <span style="background-color: #60da11; color: #000000;">{{ event }}</span>
-                    {% else %}
-                      <span style="background-color: #f7b12f; color: #000000;">{{ event }}</span>
+                      {% if event.date == res.date_debut %}
+                        {% if arrival_time == '13:00' %}
+                          {% with display_time='13h00' %}
+                            {% if event.confirmed %}
+                              <span style="background-color: #60da11; color: #000000;">{{ event }} (arrivée {{ display_time }})</span>
+                            {% else %}
+                              <span style="background-color: #f7b12f; color: #000000;">{{ event }} (arrivée {{ display_time }})</span>
+                            {% endif %}
+                          {% endwith %}
+                        {% else %}
+                          {% if event.confirmed %}
+                            <span style="background-color: #60da11; color: #000000;">{{ event }} (arrivée {{ arrival_time }})</span>
+                          {% else %}
+                            <span style="background-color: #f7b12f; color: #000000;">{{ event }} (arrivée {{ arrival_time }})</span>
+                          {% endif %}
+                        {% endif %}
+                      {% elif event.date == res.date_fin %}
+                        {% if departure_time == '12:00' %}
+                          {% with display_time='midi' %}
+                            {% if event.confirmed %}
+                              <span style="background-color: #60da11; color: #000000;">{{ event }} (départ {{ display_time }})</span>
+                            {% else %}
+                              <span style="background-color: #f7b12f; color: #000000;">{{ event }} (départ {{ display_time }})</span>
+                            {% endif %}
+                          {% endwith %}
+                        {% else %}
+                          {% if event.confirmed %}
+                            <span style="background-color: #60da11; color: #000000;">{{ event }} (départ {{ departure_time }})</span>
+                          {% else %}
+                            <span style="background-color: #f7b12f; color: #000000;">{{ event }} (départ {{ departure_time }})</span>
+                          {% endif %}
+                        {% endif %}
+                      {% else %}
+                        {% if event.confirmed %}
+                          <span style="background-color: #60da11; color: #000000;">{{ event }}</span>
+                        {% else %}
+                          <span style="background-color: #f7b12f; color: #000000;">{{ event }}</span>
+                        {% endif %}
+                      {% endif %}
                     </div>
-                    {% endif %}
+                    {% endwith %}
+                    {% endwith %}
                   {% endfor %}
                 </div>
               {% endif %}

@@ -8,6 +8,8 @@ class Reservation(models.Model):
     email = models.EmailField()
     date_debut = models.DateField()
     date_fin = models.DateField()
+    heure_arrivee = models.TimeField(default="13:00")
+    heure_depart = models.TimeField(default="12:00")
     confirmed = models.BooleanField(default=False)
 
     def __str__(self):
@@ -24,4 +26,3 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
-
