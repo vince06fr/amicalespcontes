@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView
 
 from account.mixins import LoginRequiredMixin
-from pinax.calendars.adapters import EventAdapter
+from .adapters import EventAdapter
 from pinax.calendars.mixins import DailyMixin, MonthlyMixin
 
 from .models import Event
