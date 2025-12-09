@@ -3,7 +3,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from bootstrap_datepicker_plus.widgets import DatePickerInput
-from events.models import Reservation
+from events.models import Reservation, ReservationEmailSettings
 
 
 class ReservationForm(forms.Form):
@@ -27,6 +27,13 @@ class ReservationForm(forms.Form):
     )
     commentaires = forms.CharField(widget=forms.Textarea, required=False)
     def send_email(self):
+        settings_obj = ReservationEmailSettings.objects.first()
+        if not settings_obj:
+            raise ValidationError("La configuration d'envoi d'email n'est pas définie. Merci de contacter l'administrateur.")
+        sender = settings_obj.from_email
+        recipients = [addr.strip() for addr in settings_obj.to_emails.split(",") if addr.strip()]
+        reply_to = None
+
         sujet = "Reservation"
         body = """                Bonjour,\n
         Une demande de réservation de l'appartement de St Etiennes a été \n
@@ -45,9 +52,7 @@ class ReservationForm(forms.Form):
             "midi",
             self.cleaned_data['commentaires']
         )
-        sender = "amicalespcontes@gmail.com"
-        recipient = ["vince06fr@gmail.com", "cyrsp@hotmail.fr"]  #, "riva.georges@gmail.com"]
-        send_mail(sujet, body, sender, recipient, fail_silently=False)
+        send_mail(sujet, body, sender, recipients, fail_silently=False)
 
     def reservation(self):
         nom = self.cleaned_data['nom']
@@ -68,4 +73,11 @@ class ReservationForm(forms.Form):
         depart = cleaned.get("depart")
         if arrivee and depart and depart <= arrivee:
             raise ValidationError("La date de départ doit être au moins le lendemain de la date d'arrivée.")
+
+        settings_obj = ReservationEmailSettings.objects.first()
+        if not settings_obj:
+            raise ValidationError("L'envoi d'email n'est pas configuré. Merci de contacter l'administrateur.")
+        recipients = [addr.strip() for addr in settings_obj.to_emails.split(",") if addr.strip()] if settings_obj else []
+        if not settings_obj.from_email or not recipients:
+            raise ValidationError("L'envoi d'email n'est pas configuré correctement. Merci de contacter l'administrateur.")
         return cleaned

@@ -16,6 +16,20 @@ class Reservation(models.Model):
         return self.nom
 
 
+class ReservationEmailSettings(models.Model):
+    """
+    Paramètres de notification pour les réservations (configurables en admin).
+    Singleton : une seule instance attendue.
+    """
+
+    from_email = models.EmailField()
+    to_emails = models.TextField(help_text="Liste d'adresses séparées par des virgules.")
+    singleton = models.BooleanField(default=True, unique=True, editable=False)
+
+    def __str__(self):
+        return "Paramètres email des réservations"
+
+
 class Event(models.Model):
 
     title = models.CharField(max_length=100)

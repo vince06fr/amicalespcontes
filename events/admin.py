@@ -1,5 +1,5 @@
 from django.contrib import admin
-from events.models import Event, Reservation
+from events.models import Event, Reservation, ReservationEmailSettings
 
 
 admin.site.site_header = "Administration du site de l'Amicale des SP de Contes"
@@ -44,3 +44,13 @@ class EventAdmin(admin.ModelAdmin):
 admin.site.register(Reservation, ReservationAdmin)
 admin.site.register(Event, EventAdmin)
 
+
+@admin.register(ReservationEmailSettings)
+class ReservationEmailSettingsAdmin(admin.ModelAdmin):
+    list_display = ("from_email", "to_emails")
+
+    def has_add_permission(self, request):
+        # Limite à une seule instance
+        if ReservationEmailSettings.objects.exists():
+            return False
+        return super().has_add_permission(request)
