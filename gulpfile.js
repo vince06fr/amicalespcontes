@@ -111,6 +111,7 @@ gulp.task('default', gulp.series([
 
 gulp.task('release', gulp.series([
     'build',
-    'optimize:js',
+    // Les optimisations JS sont désactivées (uglify ES5 ne supporte pas les bundles récents).
+    // 'optimize:js',
     'optimize:css'
 ]));

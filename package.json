@@ -46,7 +46,13 @@
     ]
   },
   "xo": {
-    "esnext": true,
+    "envs": [
+      "browser"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
     "rules": {
       "indent": 0,
       "no-multi-spaces": 0,
@@ -95,6 +101,7 @@
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
     "gulp-xo": "^0.25.0",
+    "eslint-config-xo": "^0.30.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.6.1"
   }
