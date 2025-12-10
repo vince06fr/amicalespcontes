@@ -127,3 +127,5 @@ pypioffline/
 *.userosscache
 *.sln.docstates
 .idea/
+node_modules/
+static/_build/
