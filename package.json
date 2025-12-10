@@ -88,7 +88,7 @@
     "gulp-compile-handlebars": "^0.6.1",
     "gulp-cssnano": "^2.0.0",
     "gulp-less": "^3.0.5",
-    "gulp-mocha": "^2.2.0",
+    "gulp-mocha": "^10.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-rev": "^6.0.1",
     "gulp-size": "^2.0.0",
